@@ -1,0 +1,9 @@
+== Simple application as per requirements specified in the Elīna's email
+This is a Spring Boot application, build is setup using Gradle. To run the applicaiton, execute:
+`./gradlew bootRun`, to test `./gradlew test` or, if on Windows based machine:
+`gradlew.bat bootRun` and `gradlew.bat test` respectively.
+
+=== Disclaimer. This is a small app for capability illustration purposses many aspects of a production
+application are omited, e.g. unit-tests do not fully cover the app and all use cases, there is no security
+(authentication, authorization), no i18n, etc. In case you'd like me to implement some of these, please
+feel free to send additional requirements.
