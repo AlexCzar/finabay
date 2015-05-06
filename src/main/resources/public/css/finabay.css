@@ -2,5 +2,5 @@
     display: none !important;
 }
 .validation-error {
-    color: red;
+    color: red !important;
 }
