@@ -1,4 +1,4 @@
-== Simple application as per requirements specified in the Elīna's email
+== Simple application as per requirements specified in Elīna's email
 This is a Spring Boot application, build is setup using Gradle. To run the applicaiton, execute:
 `./gradlew bootRun`, to test `./gradlew test` or, if on Windows based machine:
 `gradlew.bat bootRun` and `gradlew.bat test` respectively.
