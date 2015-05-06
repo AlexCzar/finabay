@@ -1,0 +1,6 @@
+[ng\:cloak], [ng-cloak], .ng-cloak, .hidden {
+    display: none !important;
+}
+.validation-error {
+    color: red;
+}

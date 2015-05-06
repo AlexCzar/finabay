@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Finabay Test App</title>
+    <link rel="stylesheet" href="css/finabay.css"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.8.0/lodash.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/restangular/1.3.1/restangular.min.js"></script>
+</head>
+
+<body ng-app="finabay" ng-strict-di>
+<div class="container" ng-controller="MainCtrl">
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            <form role="form">
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+
+                    <div class="input-group" ng-class="{ 'has-error': errors.amount }">
+                        <span class="input-group-addon">$</span>
+                        <input id="amount" required type="number" class="form-control"
+                               placeholder="Desired amount"
+                               aria-label="Amount (to the nearest dollar)" ng-model="applicationForm.amount">
+                        <span class="input-group-addon">.00</span>
+                    </div>
+                    <span class="help-block validation-error" ng-model="errors.amount" ng-show="errors.amount">
+                        {{ errors.amount }}
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="months">Desired term</label>
+
+                    <div class="input-group" ng-class="{ 'has-error': errors.term }">
+                        <input id="months" required type="number" class="form-control"
+                               placeholder="Number of months" ng-model="applicationForm.term">
+                        <span class="input-group-addon">months</span>
+                    </div>
+                    <span class="help-block validation-error" ng-model="errors.term" ng-show="errors.term">
+                        {{ errors.term }}
+                    </span>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': errors.firstName }">
+                    <label for="firstName">Your first name</label>
+                    <input id="firstName" required type="text" class="form-control" placeholder="Name"
+                           ng-model="applicationForm.firstName">
+                    <span class="help-block validation-error" ng-model="errors.firstName" ng-show="errors.firstName">
+                        {{ errors.firstName }}
+                    </span>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': errors.lastName }">
+                    <label for="lastName">Your last name</label>
+                    <input id="lastName" required type="text" class="form-control" placeholder="Surname"
+                           ng-model="applicationForm.lastName">
+                    <span class="help-block validation-error" ng-model="errors.lastName" ng-show="errors.lastName">
+                        {{ errors.lastName }}
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="idNumber">Your personal ID number</label>
+
+                    <div class="input-group" ng-class="{ 'has-error': errors.personalId }">
+                        <span class="input-group-addon">#</span>
+                        <input id="idNumber" required type="text" class="form-control"
+                               placeholder="Your personal ID number" ng-model="applicationForm.personalId">
+                    </div>
+                    <span class="help-block validation-error" ng-model="errors.personalId" ng-show="errors.personalId">
+                        {{ errors.personalId }}
+                    </span>
+                </div>
+                <button type="submit" class="btn btn-default center-block" ng-click="addApplication()">Apply</button>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <button class="btn btn-default right" ng-click="refreshApplicationsList()">Refresh Applications</button>
+        <table id="appList" class="table table-striped" ng-show="applications">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Amount</th>
+                <th>Term (months)</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Personal ID</th>
+                <th>Calculated Rate</th>
+                <th>Application Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="application in applications track by application.id">
+                <td>{{ application.id }}</td>
+                <td>{{ application.amount }}</td>
+                <td>{{ application.term }}</td>
+                <td>{{ application.firstName }}</td>
+                <td>{{ application.lastName }}</td>
+                <td>{{ application.personalId }}</td>
+                <td>{{ application.rate }}</td>
+                <td>{{ application.date | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/controllers.js"></script>
+</body>
+</html>

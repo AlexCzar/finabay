@@ -1,0 +1,41 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+version = '1.0'
+buildscript {
+    ext {
+        springBootVersion = '1.2.3.RELEASE'
+    }
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+        classpath "io.spring.gradle:dependency-management-plugin:0.5.0.RELEASE"
+        classpath 'org.springframework:springloaded:1.2.3.RELEASE'
+    }
+}
+repositories {
+    jcenter()
+}
+apply plugin: 'spring-boot'
+apply plugin: 'io.spring.dependency-management'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-undertow'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
+    runtime group: 'com.h2database', name: 'h2'
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+    testCompile group: 'com.jayway.jsonpath', name: 'json-path'
+
+    compile group: 'com.google.guava', name: 'guava', version: '18.0'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.5.3'
+    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.5.3'
+
+}
